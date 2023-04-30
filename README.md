@@ -27,7 +27,7 @@
 | Dọn sạch dữ liệu chữ viết | Lê Tuấn Hy |
 | Lập các tập train, test   | Hoàng Sơn Lâm |
 | Xử lý hình ảnh đầu vào từ người dùng | Làm chung |
-| Train model nhận diện chữ viết | | Lê Tuấn Hy | 
-| Chuyển chữ viết thành câu để nhận dạng ngôn ngữ | | Hứa Tuệ Minh | 
-| Train model nhận dạng ngôn ngữ | | Hoàng Sơn Lâm | 
-| Thiết kế app có tính năng mở camera | | Hứa Tuệ Minh |
+| Train model nhận diện chữ viết | Lê Tuấn Hy | 
+| Chuyển chữ viết thành câu để nhận dạng ngôn ngữ | Hứa Tuệ Minh | 
+| Train model nhận dạng ngôn ngữ | Hoàng Sơn Lâm | 
+| Thiết kế app có tính năng mở camera | Hứa Tuệ Minh |
