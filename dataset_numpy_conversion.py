@@ -1,26 +1,24 @@
-from PIL import Image
+from PIL import Image, ImageOps
 import numpy as np
 import os
 
-
-def convert_to_image(array):
-    return Image.fromarray(np.uint8(array))
-
-
 path = "./dataset"
 DATASET = []
-LABELS = np.array(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S',
-                   'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'])
+LABELS = []
 
 for dir_name in os.listdir(path):
+    LABELS.append(dir_name.split()[0])
     arr = []
     for filename in os.listdir(f"{path}/{dir_name}"):
         img_path = f"{path}/{dir_name}/{filename}"
         image = Image.open(img_path)
         image = image.resize((28, 28))
+        image = ImageOps.grayscale(image)
         img_array = np.array(image)
         arr.append(img_array)
     DATASET.append(arr)
 
 DATASET = np.array(DATASET)
 np.save("./np_dataset.npy", DATASET)
+LABELS = np.array(LABELS)
+np.save("./labels.npy", LABELS)
