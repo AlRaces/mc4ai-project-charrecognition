@@ -25,8 +25,9 @@ for filename in os.listdir(path):
             shutil.move(f"{path}/{filename}", f"../{dir_name}")
 
     else:
-        if (os.path.isdir(f"../{file_str}")):
-            shutil.move(f"{path}/{filename}", f"../{file_str}")
+        file_id -= 1
+        if (os.path.isdir(f"../{str(file_id)}")):
+            shutil.move(f"{path}/{filename}", f"../{str(file_id)}")
         else:
-            os.mkdir(f"../{file_str}")
-            shutil.move(f"{path}/{filename}", f"../{file_str}")
+            os.mkdir(f"../{str(file_id)}")
+            shutil.move(f"{path}/{filename}", f"../{str(file_id)}")
