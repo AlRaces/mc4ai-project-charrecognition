@@ -15,11 +15,11 @@ st.markdown(
 
 "----"
 with st.container(): 
-    st.subheader("**Concept**") 
+    st.subheader("***Main Concept***") 
     st.write("Lorem ipsum")
 
 
 "----"
 with st.container(): 
-    st.subheader("_About us_ :sunglasses:")
+    st.subheader("***About us*** :sunglasses:")
     
