@@ -9,8 +9,13 @@ st.divider()
 st.markdown("<h3 style='text-align: center; color: #FFFAF4; text-decoration: underline;'>Loss & Accuracy Graph</h3>",
             unsafe_allow_html=True)
 
-image = "D:\CAPSTONE_AI\mc4ai-project-charrecognition\streamlit-app\pages\graph.png"
-st.image(image)
+
+image_loss = "D:\CAPSTONE_AI\mc4ai-project-charrecognition\streamlit-app\loss.png"
+st.image(image_loss, caption="Loss Graph with Epochs = 1000")
+image_accuracy = "D:\CAPSTONE_AI\mc4ai-project-charrecognition\streamlit-app\precise.png"
+st.image(image_accuracy, caption="Accuracy Graph with Epochs = 1000")
+
+# Sidebar titles
 st.sidebar.subheader('Configuration')
 st.sidebar.caption('_Have fun!_')
 
