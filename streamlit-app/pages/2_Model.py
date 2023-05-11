@@ -2,8 +2,6 @@ import numpy as np
 import streamlit as st
 from streamlit_drawable_canvas import st_canvas
 from PIL import Image
-import io
-import base64
 st.markdown("<h2 style='text-align: center; color: blue;'>LHP Capstone Project - Text Recognition </h2>",
             unsafe_allow_html=True)
 st.divider()
