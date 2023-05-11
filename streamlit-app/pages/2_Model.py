@@ -52,9 +52,3 @@ uploaded_files = st.file_uploader("", type=[
 for uploaded_file in uploaded_files:
     bytes_data = uploaded_file.read()
     st.write("Image processed:", uploaded_file.name)
-
-# epoch_number = st.slider('Choose the number of epochs', 1, 100)
-
-# DATASET = np.load("np_dataset.npy")
-# LABELS = np.load("labels.npy")
-# NAMES = np.load("names.npy")

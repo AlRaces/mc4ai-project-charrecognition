@@ -2,22 +2,32 @@ import streamlit as st
 import PIL
 import numpy
 
-st.markdown("<h2 style='text-align: center; color: blue;'>LHP Capstone Project - Text Recognition </h2>",
+st.markdown("<h2 style='text-align: center; color: white; font-weight: bold;'>LHP Capstone Project - Text Recognition </h2>",
             unsafe_allow_html=True)
 st.divider()
 
-st. subheader('Configuration')
-st.caption('_Have fun!_')
+st.markdown("<h3 style='text-align: center; color: #FFFAF4; text-decoration: underline;'>Loss & Accuracy Graph</h3>",
+            unsafe_allow_html=True)
 
-train_choice = st.slider(
+image = "D:\CAPSTONE_AI\mc4ai-project-charrecognition\streamlit-app\pages\graph.png"
+st.image(image)
+st.sidebar.subheader('Configuration')
+st.sidebar.caption('_Have fun!_')
+
+# sidebar sliders
+train_choice = st.sidebar.slider(
     'Choose the number of train pictures you want to use:', 100, 3410)
-test_choice = st.slider('Choose test size:', 100, 3410)
-epoch_choice = st.slider('Choose the number of epochs:', 1, 100)
-loss_choice = st.radio(
-    "Choose the loss model you want to use",
-    ('categorical_crossentropy (Recommended)', 'CE', 'MAE', 'MSE'))
+test_choice = st.sidebar.slider('Choose test size:', 100, 3410)
+epoch_choice = st.sidebar.slider('Choose the number of epochs:', 1, 100)
 
-config_finish = st.button("Set Config")
+# sidebar checkbox
+loss_function_option = [
+    "categorical_crossentropy (Recommended)", 'CE', 'MAE', 'MSE']
+loss_choice = st.sidebar.selectbox(
+    "Choose your loss function: ", loss_function_option)
+
+# validate options
+config_finish = st.sidebar.button("Set Config")
 if config_finish:
     st.write(test_choice)
     st.write(train_choice)
