@@ -28,9 +28,7 @@ st.sidebar.caption('_Have fun!_')
 
 # sidebar sliders
 train_choice = st.sidebar.slider(
-    'Choose the number of train pictures you want to use:', 100, 3410)
-test_choice = st.sidebar.slider(
-    'Choose test size:', 100, 3410)
+    'Choose the number of train pictures you want to use:', 100, 3410 - 100)
 epoch_choice = st.sidebar.slider(
     'Choose the number of epochs:', 1, 100)
 
@@ -49,7 +47,7 @@ if config_finish:
 
     # SPLIT DATASET
     train_choice = int(train_choice)
-    test_choice = int(test_choice)
+    test_choice = int(3410 - train_choice)
     X_train, X_test, y_train, y_test = train_test_split(
         dataset, labels, test_size=test_choice, train_size=train_choice)
 
@@ -69,11 +67,11 @@ if config_finish:
     model.add(Dense(62, activation='softmax'))
     model.compile(loss=f"{loss_choice}",
                   optimizer='adam', metrics='accuracy')
-    st.write(model.summary())
 
     # DRAW LOSS AND ACCURACY GRAPH
     epoch_choice = int(epoch_choice)
-    history = model.fit(X_train, y_train_ohe, epochs=epoch_choice)
+    with st.spinner("Please wait for model to load"):
+        history = model.fit(X_train, y_train_ohe, epochs=epoch_choice)
 
     fig, axs = plt.subplots(figsize=(12, 4), ncols=2)
     axs[0].set_title("Loss")
@@ -82,3 +80,5 @@ if config_finish:
     axs[1].plot(history.history["accuracy"])
     # example_graph = not example_graph
     st.pyplot(fig)
+    model.save(
+        "D:\CAPSTONE_AI\mc4ai-project-charrecognition\streamlit-app\sequential_model.h5")
