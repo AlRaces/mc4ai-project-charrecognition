@@ -43,7 +43,7 @@ if st.button('Done!'):
         result_picture = canvas_result.image_data
         result_picture = Image.fromarray(result_picture)
         result_picture.convert("L")
-        result_picture.save("./result_picture.png")
+        result_picture.save("./input_folder/result_picture.png")
         st.write('Image saved!')
 
 st.caption('_or upload a picture:_')
