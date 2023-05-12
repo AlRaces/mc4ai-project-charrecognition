@@ -94,7 +94,8 @@ if please_predict:
             continue
         inputname.append(f"Upload Picture number_{i}")
 
-    st.write("Image order:")
-    st.write(*inputname)
-    st.write("Result:")
-    st.write(*result)
+    st.subheader("**IMAGE ORDER**")
+    st.write(inputname)
+    st.divider()
+    st.subheader("**RESULT**")
+    st.write(result)
