@@ -1,7 +1,7 @@
 import numpy as np
 import streamlit as st
 from streamlit_drawable_canvas import st_canvas
-from PIL import Image
+from PIL import Image, ImageOps
 import io
 from keras.models import load_model
 import os
@@ -20,7 +20,7 @@ drawing_mode = st.sidebar.selectbox(
                       "rect", "circle", "transform")
 )
 
-stroke_width = st.sidebar.slider("Stroke width: ", 1, 25, 3)
+stroke_width = st.sidebar.slider("Stroke width: ", 10, 25, 10)
 if drawing_mode == 'point':
     point_display_radius = st.sidebar.slider(
         "Point display radius: ", 1, 25, 3)
@@ -36,7 +36,7 @@ canvas_result = st_canvas(
     stroke_color=stroke_color,
     background_color=bg_color,
     update_streamlit=realtime_update,
-    height=150,
+    height=400,
     drawing_mode=drawing_mode,
     point_display_radius=point_display_radius if drawing_mode == 'point' else 0,
     key="canvas",
@@ -46,7 +46,7 @@ if st.button('Done!'):
     if canvas_result.image_data is not None:
         result_picture = canvas_result.image_data
         result_picture = Image.fromarray(result_picture)
-        result_picture = result_picture.convert("L")
+        result_picture = ImageOps.grayscale(result_picture)
         result_picture = result_picture.resize((28, 28))
         result_picture.save(
             "D:\CAPSTONE_AI\mc4ai-project-charrecognition\streamlit-app\pages\input_folder\img_from_canvas.png")
@@ -71,11 +71,12 @@ if please_predict:
     for i, uploaded_file in enumerate(uploaded_files):
         bytes_data = uploaded_file.read()
         image = Image.open(io.BytesIO(bytes_data))
-        image = image.convert('L')
+        image = ImageOps.grayscale(image)
         image.save(
             f"D:\CAPSTONE_AI\mc4ai-project-charrecognition\streamlit-app\pages\input_folder\{str(i)}.png")
     path = "D:\CAPSTONE_AI\mc4ai-project-charrecognition\streamlit-app\pages\input_folder"
 
+    # CHECK AND PREDICT DRAWN IMAGES
     # PREDICT UPLOADED IMAGES
     result = []
     inputname = []
@@ -84,28 +85,16 @@ if please_predict:
         image = Image.open(f"{path}\{filename}")
         image = np.array(image)
         image = image.astype(np.float32) / 255.0
-        iamge = image.reshape(1, 28 * 28)
-        r = int(model.predict(image))
-        result.append(names[r])
-        inputname.append(f"Picture Uploaded no: {i}")
-
-    # CHECK AND PREDICT DRAWN IMAGES
-    if os.path.isfile("D:\CAPSTONE_AI\mc4ai-project-charrecognition\streamlit-app\pages\input_folder\img_from_canvas.png"):
-        image = Image.open(
-            "D:\CAPSTONE_AI\mc4ai-project-charrecognition\streamlit-app\pages\input_folder\img_from_canvas.png")
-        image = np.array(image)
-        image = image.astype(np.float32) / 255.0
-        iamge = image.reshape((1, 28, 28, 1))
+        image = image.reshape(1, 28, 28, 1)
         r = model.predict(image)
-        result.append(names[r])
-        inputname.append("Image drawn from canvas")
-    st.write(result)
-    st.write("Corresponding image order:")
-    st.write(inputname)
+        l = r.argmax()
+        result.append(names[l])
+        if filename == "img_from_canvas.png":
+            inputname.append("Image from Canvas")
+            continue
+        inputname.append(f"Upload Picture number_{i}")
 
-    # VALIDATE OUTPUT
-    correctness = st.radio("Does the answer satisfy you ?",
-                           "All Correct", options=("Something Wrong"))
-    if correctness == "Something Wrong":
-        st.write(
-            "We are sorry for the inaccuracy of our model, could you give us the answer so we can improve next time?")
+    st.write("Image order:")
+    st.write(*inputname)
+    st.write("Result:")
+    st.write(*result)

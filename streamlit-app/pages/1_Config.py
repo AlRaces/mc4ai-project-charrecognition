@@ -8,6 +8,7 @@ from sklearn.model_selection import train_test_split
 from tensorflow.keras.utils import to_categorical
 import matplotlib.pyplot as plt
 
+dataset = np.load("../np_dataset.npy")
 st.markdown("<h2 style='text-align: center; color: white; font-weight: bold;'>LHP Capstone Project - Text Recognition </h2>",
             unsafe_allow_html=True)
 st.divider()
@@ -28,9 +29,9 @@ st.sidebar.caption('_Have fun!_')
 
 # sidebar sliders
 train_choice = st.sidebar.slider(
-    'Choose the number of train pictures you want to use:', 100, 3410 - 100)
+    'Choose the number of pictures to train:', 100, dataset.shape[0] - 100)
 epoch_choice = st.sidebar.slider(
-    'Choose the number of epochs:', 1, 100)
+    'Choose the number of epochs:', 100, 1000)
 
 # sidebar checkbox
 loss_function_option = [
@@ -42,12 +43,11 @@ loss_choice = st.sidebar.selectbox(
 config_finish = st.sidebar.button("Set Config")
 if config_finish:
     # LOAD DATASET
-    dataset = np.load("../np_dataset.npy")
     labels = np.load("../labels.npy")
 
     # SPLIT DATASET
     train_choice = int(train_choice)
-    test_choice = int(3410 - train_choice)
+    test_choice = int(dataset.shape[0] - train_choice)
     X_train, X_test, y_train, y_test = train_test_split(
         dataset, labels, test_size=test_choice, train_size=train_choice)
 
@@ -65,7 +65,7 @@ if config_finish:
     model.add(Input(shape=X_train.shape[1:]))
     model.add(Flatten())
     model.add(Dense(62, activation='softmax'))
-    model.compile(loss=f"{loss_choice}",
+    model.compile(loss=f"{loss_choice.split()[0]}",
                   optimizer='adam', metrics='accuracy')
 
     # DRAW LOSS AND ACCURACY GRAPH
