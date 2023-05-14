@@ -3,7 +3,7 @@ import streamlit as st
 from streamlit_drawable_canvas import st_canvas
 from PIL import Image, ImageOps
 import io
-from keras.models import load_model
+from tensorflow.keras.models import load_model
 import os
 
 st.markdown("<h2 style='text-align: center; color: white; font-style: bold;'>LHP Capstone Project - Text Recognition </h2>",
@@ -59,10 +59,10 @@ uploaded_files = st.file_uploader("", type=[
 
 please_predict = st.button("***PREDICT***")
 if please_predict:
-    names = np.load("D:/CAPSTONE_AI/mc4ai-project-charrecognition/names.npy")
+    names = np.load("../names.npy")
     try:
         model = load_model(
-            "D:\CAPSTONE_AI\mc4ai-project-charrecognition\streamlit-app\sequential_model.h5")
+            "./sequential_model.h5")
     except Exception as e:
         st.write(
             "Something went wrong!, please check if you've set model configurations.")
@@ -73,9 +73,10 @@ if please_predict:
         bytes_data = uploaded_file.read()
         image = Image.open(io.BytesIO(bytes_data))
         image = ImageOps.grayscale(image)
+        image = image.resize((28, 28))
         image.save(
-            f"D:\CAPSTONE_AI\mc4ai-project-charrecognition\streamlit-app\pages\input_folder\{str(i)}.png")
-    path = "D:\CAPSTONE_AI\mc4ai-project-charrecognition\streamlit-app\pages\input_folder"
+            f"./pages/input_folder/{str(i)}.png")
+    path = "./pages/input_folder"
 
     # CHECK AND PREDICT DRAWN IMAGES
     # PREDICT UPLOADED IMAGES

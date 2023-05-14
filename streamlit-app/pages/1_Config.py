@@ -81,4 +81,4 @@ if config_finish:
     # example_graph = not example_graph
     st.pyplot(fig)
     model.save(
-        "D:\CAPSTONE_AI\mc4ai-project-charrecognition\streamlit-app\sequential_model.h5")
+        "./sequential_model.h5")
