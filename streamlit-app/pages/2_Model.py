@@ -44,12 +44,13 @@ canvas_result = st_canvas(
 
 if st.button('Done!'):
     if canvas_result.image_data is not None:
+        cwd = os.getcwd()
         result_picture = canvas_result.image_data
         result_picture = Image.fromarray(result_picture)
         result_picture = ImageOps.grayscale(result_picture)
         result_picture = result_picture.resize((28, 28))
         result_picture.save(
-            "D:\CAPSTONE_AI\mc4ai-project-charrecognition\streamlit-app\pages\input_folder\img_from_canvas.png")
+            f"{os.path.join(cwd, 'pages', 'input_folder', 'img_from_canvas.png')}")
         st.success('Image saved!')
 
 st.caption('_or upload a picture:_')
