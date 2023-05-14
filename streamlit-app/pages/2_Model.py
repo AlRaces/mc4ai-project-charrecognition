@@ -6,7 +6,7 @@ import io
 from keras.models import load_model
 import os
 
-st.markdown("<h2 style='text-align: center; color: blue;'>LHP Capstone Project - Text Recognition </h2>",
+st.markdown("<h2 style='text-align: center; color: white; font-style: bold;'>LHP Capstone Project - Text Recognition </h2>",
             unsafe_allow_html=True)
 st.divider()
 
