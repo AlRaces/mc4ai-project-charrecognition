@@ -64,7 +64,7 @@ if please_predict:
             "D:\CAPSTONE_AI\mc4ai-project-charrecognition\streamlit-app\sequential_model.h5")
     except Exception as e:
         st.write(
-            "Something went wrong, please check if you've set model configurations")
+            "Something went wrong!, please check if you've set model configurations.")
         st.stop()
 
     # CONVERT UPLOADED IMAGES INTO FILES WITH CORRECT SPECS
