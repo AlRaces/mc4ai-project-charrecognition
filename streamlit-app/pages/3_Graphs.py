@@ -5,10 +5,9 @@ import seaborn as sns
 from sklearn.metrics import confusion_matrix
 from keras.models import load_model
 
-dataset = np.load(
-    "D:/CAPSTONE_AI/mc4ai-project-charrecognition/np_dataset.npy")
-labels = np.load("D:\CAPSTONE_AI\mc4ai-project-charrecognition\labels.npy")
-names = np.load("D:/CAPSTONE_AI/mc4ai-project-charrecognition/names.npy")
+dataset = np.load("mc4ai-project-charrecognition/np_dataset.npy")
+labels = np.load("mc4ai-project-charrecognition/labels.npy")
+names = np.load("mc4ai-project-charrecognition/ames.npy")
 
 st.markdown("<h2 style='text-align: center;'><b>Graphs & Confusion Matrix</b></h2>",
             unsafe_allow_html=True)
@@ -33,7 +32,7 @@ if draw_confusion:
         y = labels[:size]
         y_pred = model.predict(x).argmax(axis=1)
         cm = confusion_matrix(y, y_pred)
-        fig = plt.figure(figsize=(10, 10))
+        fig, ax = plt.subplots()
         sns.heatmap(cm, annot=True, cmap='Blues',
                     yticklabels=names, xticklabels=names)
         st.pyplot(fig)
