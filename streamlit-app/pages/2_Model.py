@@ -6,6 +6,7 @@ import io
 from tensorflow.keras.models import load_model
 import os
 
+
 st.markdown("<h2 style='text-align: center; color: white; font-style: bold;'>LHP Capstone Project - Text Recognition </h2>",
             unsafe_allow_html=True)
 st.divider()
@@ -68,6 +69,11 @@ if please_predict:
             "Something went wrong!, please check if you've set model configurations.")
         st.stop()
 
+    # REMOVE EXISTING FILES IN INPUT FOLDER
+    for filename in os.listdir(f"./pages/input_folder"):
+        if (filename != "img_from_canvas.png"):
+            os.remove(f"./pages/input_folder/{filename}")
+
     # CONVERT UPLOADED IMAGES INTO FILES WITH CORRECT SPECS
     for i, uploaded_file in enumerate(uploaded_files):
         bytes_data = uploaded_file.read()
@@ -101,3 +107,23 @@ if please_predict:
     st.divider()
     st.subheader("**RESULT**")
     st.write(result)
+
+# RATE RESULT
+correctness = st.radio("Are our outputs accurate?", ("YES", "NO"))
+correct_input_submission = st.button("SUBMIT OPINION")
+if correct_input_submission:
+    if correctness == "NO":
+        with st.container():
+            n = len(os.listdir("./pages/input_folder"))
+            option_list = [i for i in range(n)]
+            selected_option = st.multiselect(
+                "**Please tell us the ID of the images that are wrong, based on the ordinal number in output list:**", option_list)
+            set_correct = st.button("COULD YOU CONTRIBUTE CORRECT ANSWER")
+            if set_correct:
+                with open("./pages/correct_answer.txt") as f:
+                    for o in selected_option:
+                        st.write(f"IMAGE NUMBER {o}")
+                        correct_input = st.text("Enter correct input")
+                        f.write(f"{o, correct_input}\n")
+        if correctness == "YES":
+            st.success("Thank you for using our application!")
