@@ -55,7 +55,7 @@ if st.button('Done!'):
         st.success('Image saved!')
 
 st.caption('_or upload a picture:_')
-uploaded_files = st.file_uploader("", type=[
+uploaded_files = st.file_uploader("Upload Image File", type=[
                                   'png', 'jpg', 'jpeg'], accept_multiple_files=True, label_visibility="collapsed")
 
 please_predict = st.button("***PREDICT***")
@@ -109,21 +109,22 @@ if please_predict:
     st.write(result)
 
 # RATE RESULT
-correctness = st.radio("Are our outputs accurate?", ("YES", "NO"))
-correct_input_submission = st.button("SUBMIT OPINION")
-if correct_input_submission:
-    if correctness == "NO":
-        with st.container():
-            n = len(os.listdir("./pages/input_folder"))
-            option_list = [i for i in range(n)]
-            selected_option = st.multiselect(
-                "**Please tell us the ID of the images that are wrong, based on the ordinal number in output list:**", option_list)
-            set_correct = st.button("COULD YOU CONTRIBUTE CORRECT ANSWER")
-            if set_correct:
-                with open("./pages/correct_answer.txt") as f:
-                    for o in selected_option:
-                        st.write(f"IMAGE NUMBER {o}")
-                        correct_input = st.text("Enter correct input")
-                        f.write(f"{o, correct_input}\n")
-        if correctness == "YES":
-            st.success("Thank you for using our application!")
+correctness = st.radio("**Are our outputs accurate?**",
+                       options=("YES", "NO"))
+if correctness == "NO":
+    with st.container():
+        n = len(os.listdir("./pages/input_folder"))
+        option_list = [i for i in range(n)]
+        selected_option = st.multiselect(
+            "**Please tell us the ID of the images that are wrong, based on the ordinal number in output list:**", option_list, key="my_multiselect_key", help="Enter image ID")
+        if selected_option:
+            st.session_state.selected_option = selected_option
+            correct_input = st.text_input(
+                "Enter correct input in the order you've selected above, seperated by a space")
+            with open("./pages/correct_answer.txt", "w") as f:
+                files = os.listdir("path")
+                for o, c in zip(selected_option, correct_input.split()):
+                    f.write(f"{o, c}\n")
+            st.success("Thank you for your contributions")
+if correctness == "YES":
+    st.success("Thank you for using our application!")
