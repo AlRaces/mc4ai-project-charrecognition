@@ -122,9 +122,32 @@ if correctness == "NO":
             correct_input = st.text_input(
                 "Enter correct input in the order you've selected above, seperated by a space")
             with open("./pages/correct_answer.txt", "w") as f:
-                files = os.listdir("path")
                 for o, c in zip(selected_option, correct_input.split()):
-                    f.write(f"{o, c}\n")
+                    f.write(str(o) + " " + str(c) + "\n")
             st.success("Thank you for your contributions")
 if correctness == "YES":
     st.success("Thank you for using our application!")
+
+# ADDED USER'S INPUT TO DATASET
+contribute = st.button("Contribute to dataset!")
+if contribute:
+    path = "./pages/input_folder"
+    filelist = os.listdir(path)
+    cur_labels = []
+    cur_images = []
+    with open("./pages/correct_answer.txt", "r") as input:
+        for row in input.readlines():
+            order, valid_input = list(map(int, row.split()))
+            a = Image.fromarray(filelist[order])
+            cur_labels.append(a)
+            cur_labels.append(valid_input)
+    with st.spinner("Please wait while we add your contribution to dataset"):
+        DATASET = np.load("../np_dataset.npy")
+        LABELS = np.load("../labels.npy")
+        cur_labels = np.array(cur_labels)
+        cur_images = np.array(cur_images)
+        DATASET = np.append(DATASET, cur_images)
+        LABELS = np.append(LABELS, cur_labels)
+        np.save("../np_dataset.npy", DATASET)
+        np.save("../labels.npy", LABELS)
+    st.success("Contribution added, thank you for your patience")

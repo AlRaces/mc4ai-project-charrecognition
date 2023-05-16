@@ -21,14 +21,14 @@ st.markdown("<h2 style='text-align: center;'><b>Graphs & Confusion Matrix</b></h
             unsafe_allow_html=True)
 st.divider()
 
-# KHÔNG HOẠT ĐỘNG
 st.subheader("***CONFUSION MATRIX***")
 size = st.slider("Choose size of dataset for __Confusion Matrix__",
-                100, dataset.shape[0])
+                 100, dataset.shape[0])
 set_train_size = st.button("Set train size!")
-if set_train_size: 
+if set_train_size:
     size = int(size)
-    X_train, X_test, y_train, y_test = train_test_split(dataset, labels, test_size=size)
+    X_train, X_test, y_train, y_test = train_test_split(
+        dataset, labels, test_size=size)
     y_pred = model.predict(X_test).argmax(axis=1)
     cm = confusion_matrix(y_test, y_pred)
     fig, ax = plt.subplots(figsize=(62, 62))
@@ -38,13 +38,13 @@ if set_train_size:
     st.pyplot(fig)
 
 st.subheader("***DATASET***")
-with st.spinner("Please wait for dataset to load"): 
-    fig, axs = plt.subplots(62, 3) 
+with st.spinner("Please wait for dataset to load"):
+    fig, axs = plt.subplots(62, 3)
     X_train, X_test, y_train, y_test = train_test_split(dataset, labels)
     fig.set_figheight(20)
     fig.set_figwidth(20)
-    for i in range(62): 
-        for j in range(3): 
+    for i in range(62):
+        for j in range(3):
             target = np.random.choice(np.where(y_train == i)[0])
             axs[i][j].axis("off")
             axs[i][j].imshow(X_train[target].reshape(28, 28), cmap="gray")
