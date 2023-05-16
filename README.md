@@ -1,33 +1,31 @@
-
 # Danh sách thành viên
 
-- Họ và Tên
-  1. Lê Tuấn Hy
-  2. Hoàng Sơn Lâm 
-  3. Hứa Tuệ Minh
-- Lớp
-  1. 11B
-  2. 11CT1
-  3. 11CT1
-- Email
-  1. letuanhy1507@gmail.com
-  2. csgoalraces@gmail.com
-  3. 06minhhua@gmai.com
+-   Họ và Tên
+    1. Lê Tuấn Hy
+    2. Hoàng Sơn Lâm
+    3. Hứa Tuệ Minh
+-   Lớp
+    1. 11B
+    2. 11CT1
+    3. 11CT1
+-   Email
+    1. letuanhy1507@gmail.com
+    2. csgoalraces@gmail.com
+    3. 06minhhua@gmai.com
 
 # Thông tin Project
 
 **Đề tài:** Nhận dạng chữ viết tiếng Anh bằng tay + nhận dạng ngôn ngữ qua chữ viết
 
-**Các thư viện sử dụng:** numpy, matplotlib, scikit-learn, plotly, pillow
+**Các thư viện sử dụng:** numpy, matplotlib, scikit-learn, pillow, streamlit, streamlit-drawable-canvas,tensorflow, seaborn
 
-**Các chức năng chính & kế hoạch thực hiện**: 
+**Các chức năng chính & kế hoạch thực hiện**:
 
-| Chức năng      | Người thực hiện |
-| ----------- | ----------- |
-| Dọn sạch dữ liệu chữ viết | Lê Tuấn Hy |
-| Lập các tập train, test   | Hoàng Sơn Lâm |
-| Xử lý hình ảnh đầu vào từ người dùng | Làm chung |
-| Train model nhận diện chữ viết | Lê Tuấn Hy | 
-| Chuyển chữ viết thành câu để nhận dạng ngôn ngữ | Hứa Tuệ Minh | 
-| Train model nhận dạng ngôn ngữ | Hoàng Sơn Lâm | 
-| Thiết kế app có tính năng mở camera | Hứa Tuệ Minh |
+| Chức năng                                               | Người thực hiện            |
+| ------------------------------------------------------- | -------------------------- |
+| Thu thập dữ liệu                                        | Hứa Tuệ Minh               |
+| Dọn sạch + chuyển đổi dữ liệu                           | Lê Tuấn Hy                 |
+| Xử lý các loại đồ thị                                   | Lê Tuấn Hy + Hoàng Sơn Lâm |
+| Xử lý hình ảnh đầu vào từ người dùng                    | Làm chung                  |
+| Train model nhận diện chữ viết                          | Lê Tuấn Hy + Hoàng Sơn Lâm |
+| Thiết kế app đa chức năng thuận tiện cho việc nhận dạng | Lê Tuấn Hy + Hoàng Sơn Lâm |
