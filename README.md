@@ -15,7 +15,7 @@
 
 # Thông tin Project
 
-**Đề tài:** Nhận dạng chữ viết tiếng Anh bằng tay + nhận dạng ngôn ngữ qua chữ viết
+**Đề tài:** Nhận dạng số, chữ cái tiếng Anh viết tay.
 
 **Các thư viện sử dụng:** numpy, matplotlib, scikit-learn, pillow, streamlit, streamlit-drawable-canvas,tensorflow, seaborn
 
