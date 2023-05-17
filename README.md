@@ -15,7 +15,7 @@
 
 # Thông tin Project
 
-**Đề tài:** Nhận dạng số, chữ cái tiếng Anh viết tay.
+**Đề tài:** Nhận dạng số, chữ cái tiếng Anh (hoa/thường) viết tay.
 
 **Các thư viện sử dụng:** numpy, matplotlib, scikit-learn, pillow, streamlit, streamlit-drawable-canvas,tensorflow, seaborn
 
@@ -29,3 +29,5 @@
 | Xử lý hình ảnh đầu vào từ người dùng                    | Làm chung                  | 05/05 - 15/05 |
 | Train model nhận diện chữ viết                          | Lê Tuấn Hy + Hoàng Sơn Lâm | 05/05 - 13/05 |
 | Thiết kế app đa chức năng thuận tiện cho việc nhận dạng | Lê Tuấn Hy + Hoàng Sơn Lâm | 03/05 - 17/05 |
+
+**Link video dự án**: https://youtu.be/Jg2RarfJmzk
