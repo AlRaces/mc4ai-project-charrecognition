@@ -113,7 +113,8 @@ if please_predict:
 
 # RATE RESULT
 st.subheader("Was our prediction correct?")
-st.caption("_Since we are having a small amount of samples, the prediction might not be perfect._")
+st.caption(
+    "_Since we are having a small amount of samples, the prediction might not be perfect._")
 st.caption("_Please consider helping to the project by submitting your incorrect prediction into the report section below. With your help, the AI will get better with predicting in the future!_")
 correctness = st.radio("",
                        options=("YES", "NO"), label_visibility="collapsed")
@@ -149,16 +150,18 @@ if contribute:
     with open("./pages/correct_answer.txt", "r") as input:
         for row in input.readlines():
             order, valid_input = list(map(int, row.split()))
-            a = Image.fromarray(f"./pages/input_folder/{filelist[order]}")
-            cur_labels.append(a)
+            img = Image.open(f"./pages/input_folder/{filelist[order]}")
+            a = np.array(img)
+            cur_images.append(a)
             cur_labels.append(valid_input)
     with st.spinner("Please wait while we add your contribution to dataset"):
         DATASET = np.load("../np_dataset.npy")
         LABELS = np.load("../labels.npy")
         cur_labels = np.array(cur_labels)
         cur_images = np.array(cur_images)
-        DATASET = np.append(DATASET, cur_images)
-        LABELS = np.append(LABELS, cur_labels)
+        st.write(cur_images.shape)
+        DATASET = np.concatenate((DATASET, cur_images), axis=0)
+        LABELS = np.concatenate((LABELS, cur_labels), axis=0)
         np.save("../np_dataset.npy", DATASET)
         np.save("../labels.npy", LABELS)
     st.success("Contribution added, thank you for your support!")
