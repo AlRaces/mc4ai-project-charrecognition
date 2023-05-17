@@ -21,11 +21,11 @@
 
 **Các chức năng chính & kế hoạch thực hiện**:
 
-| Chức năng                                               | Người thực hiện            | Tiến độ        |
-| ------------------------------------------------------- | -------------------------- | -------------- |
-| Thu thập dữ liệu                                        | Hứa Tuệ Minh               | 03/05 - 17/05  |
-| Dọn sạch + chuyển đổi dữ liệu                           | Lê Tuấn Hy                 | 03/05 - 17/05  |
-| Xử lý các loại đồ thị                                   | Lê Tuấn Hy + Hoàng Sơn Lâm | 06/05 - 15/05  |
-| Xử lý hình ảnh đầu vào từ người dùng                    | Làm chung                  | 05/05 - 15/ 05 |
-| Train model nhận diện chữ viết                          | Lê Tuấn Hy + Hoàng Sơn Lâm | 05/05 - 13/05  |
-| Thiết kế app đa chức năng thuận tiện cho việc nhận dạng | Lê Tuấn Hy + Hoàng Sơn Lâm | 03/05 - 17/05  |
+| Chức năng                                               | Người thực hiện            | Tiến độ       |
+| ------------------------------------------------------- | -------------------------- | ------------- |
+| Thu thập dữ liệu                                        | Hứa Tuệ Minh               | 03/05 - 17/05 |
+| Dọn sạch + chuyển đổi dữ liệu                           | Lê Tuấn Hy                 | 03/05 - 17/05 |
+| Xử lý các loại đồ thị                                   | Lê Tuấn Hy + Hoàng Sơn Lâm | 06/05 - 15/05 |
+| Xử lý hình ảnh đầu vào từ người dùng                    | Làm chung                  | 05/05 - 15/05 |
+| Train model nhận diện chữ viết                          | Lê Tuấn Hy + Hoàng Sơn Lâm | 05/05 - 13/05 |
+| Thiết kế app đa chức năng thuận tiện cho việc nhận dạng | Lê Tuấn Hy + Hoàng Sơn Lâm | 03/05 - 17/05 |
