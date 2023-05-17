@@ -17,9 +17,12 @@ except Exception as e:
         "Something went wrong!, please check if you've set model configurations.")
     st.stop()
 
-st.markdown("<h2 style='text-align: center;'><b>Graphs & Confusion Matrix</b></h2>",
+st.markdown("<h2 style='text-align: center; font-weight: bold;'>LHP Capstone Project - Text Recognition </h2>",
             unsafe_allow_html=True)
 st.divider()
+
+st.markdown("<h3 style='text-align: center; text-decoration: underline;'>Confusion Matrix and Datasets</h3>",
+            unsafe_allow_html=True)
 
 st.subheader("***CONFUSION MATRIX***")
 size = st.slider("Choose size of dataset for __Confusion Matrix__",
