@@ -32,7 +32,8 @@ st.markdown("<h3 style='text-align: center; text-decoration: underline;'>Loss & 
 
 # Sidebar titles
 st.sidebar.subheader('Configuration')
-st.sidebar.caption('_Have fun!_')
+st.sidebar.caption('_This is where you can change the configurations for the model to make it more (or less) accurate! Have fun!_')
+st.sidebar.caption('_P/S: For larger test sizes / epochs, the runtime might take a while._')
 
 # sidebar sliders
 train_choice = st.sidebar.slider(
