@@ -123,7 +123,12 @@ if correctness == "NO":
                 "Enter correct input in the order you've selected above, seperated by a space")
             with open("./pages/correct_answer.txt", "w") as f:
                 for o, c in zip(selected_option, correct_input.split()):
-                    f.write(str(o) + " " + str(c) + "\n")
+                    if len(c) > 1:
+                        st.error(
+                            "Expect 1 character at a time but received 2, please type the correct input again.")
+                        st.stop()
+                    else:
+                        f.write(str(o) + " " + str(c) + "\n")
             st.success("Thank you for your contributions")
 if correctness == "YES":
     st.success("Thank you for using our application!")
@@ -138,7 +143,7 @@ if contribute:
     with open("./pages/correct_answer.txt", "r") as input:
         for row in input.readlines():
             order, valid_input = list(map(int, row.split()))
-            a = Image.fromarray(filelist[order])
+            a = Image.fromarray(f"./pages/input_folder/{filelist[order]}")
             cur_labels.append(a)
             cur_labels.append(valid_input)
     with st.spinner("Please wait while we add your contribution to dataset"):
