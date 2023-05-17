@@ -23,7 +23,7 @@ st.divider()
 
 st.subheader("***CONFUSION MATRIX***")
 size = st.slider("Choose size of dataset for __Confusion Matrix__",
-                 100, dataset.shape[0])
+                 100, dataset.shape[0] - 100)
 set_train_size = st.button("Set train size!")
 if set_train_size:
     size = int(size)
