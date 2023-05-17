@@ -7,9 +7,12 @@ from tensorflow.keras.models import load_model
 import os
 
 
-st.markdown("<h2 style='text-align: center; font-style: bold;'>LHP Capstone Project - Text Recognition </h2>",
+st.markdown("<h2 style='text-align: center; font-weight: bold;'>LHP Capstone Project - Text Recognition </h2>",
             unsafe_allow_html=True)
 st.divider()
+
+st.markdown("<h3 style='text-align: center; text-decoration: underline;'>Model Prediction</h3>",
+            unsafe_allow_html=True)
 
 st.subheader('Input')
 st.caption('_Draw your letter here!_')
