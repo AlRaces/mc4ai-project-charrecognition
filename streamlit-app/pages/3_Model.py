@@ -161,4 +161,4 @@ if contribute:
         LABELS = np.append(LABELS, cur_labels)
         np.save("../np_dataset.npy", DATASET)
         np.save("../labels.npy", LABELS)
-    st.success("Contribution added, thank you for your patience")
+    st.success("Contribution added, thank you for your support!")
