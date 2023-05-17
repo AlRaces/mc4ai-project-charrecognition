@@ -135,7 +135,7 @@ if correctness == "NO":
                         st.stop()
                     else:
                         f.write(str(o) + " " + str(c) + "\n")
-            st.success("Thank you for your contributions")
+            st.success("Thank you for your contributions!")
 if correctness == "YES":
     st.success("Thank you for using our application!")
 
