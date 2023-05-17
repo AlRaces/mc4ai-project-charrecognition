@@ -109,8 +109,11 @@ if please_predict:
     st.write(result)
 
 # RATE RESULT
-correctness = st.radio("**Are our outputs accurate?**",
-                       options=("YES", "NO"))
+st.subheader("Was our prediction correct?")
+st.caption("_Since we are having a small amount of samples, the prediction might not be perfect._")
+st.caption("_Please consider helping to the project by submitting your incorrect prediction into the report section below. With your help, the AI will get better with predicting in the future!_")
+correctness = st.radio("",
+                       options=("YES", "NO"), label_visibility="collapsed")
 if correctness == "NO":
     with st.container():
         n = len(os.listdir("./pages/input_folder"))
@@ -125,7 +128,7 @@ if correctness == "NO":
                 for o, c in zip(selected_option, correct_input.split()):
                     if len(c) > 1:
                         st.error(
-                            "Expect 1 character at a time but received 2, please type the correct input again.")
+                            "Expect 1 character at a time but received too much, please type the correct input again.")
                         st.stop()
                     else:
                         f.write(str(o) + " " + str(c) + "\n")
