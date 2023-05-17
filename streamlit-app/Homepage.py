@@ -22,5 +22,4 @@ with st.container():
     st.markdown("<p><h5 style='text-decoration: underline;'>TƯƠNG LAI:</h5>Hiện tại, A.I chỉ có thể nhận diện từng chữ cái một lúc. Nhưng trong tương lai, nhóm dự định sẽ cải tiến để A.I có thể <b style='font-style: italic; color: #D2B48C;'>nhận dạng từng từ</b>, <b style='font-style: italic; color: #D2B48C;'>từng câu</b>, cũng như có thể nhận dạng <b style='font-style: italic; color: #D2B48C;'>các loại ngôn ngữ khác nhau</b>. Từ đó, có thể thiết kế một website cho phép người dùng mở camera trực tiếp để phiên dịch những đoạn văn bản thuộc nhiều ngôn ngữ khác nhau. Ngoài ra, <b style='font-style: italic; color: #D2B48C;'>lượng dataset của nhóm vẫn còn rất nhỏ</b>, dẫn đến việc model dự đoán không chính xác. Cả nhóm hiện tại vẫn đang bổ sung dataset và cùng với chức năng <b style='font-style: italic; color: #D2B48C;'>cho phép người dùng đóng góp vào dataset</b> sẽ giúp cho model dự đoán chính xác hơn trong tương lai.</p>",
                 unsafe_allow_html=True)
 "----"
-with st.container():
-    st.subheader("***About us*** :sunglasses:")
+
