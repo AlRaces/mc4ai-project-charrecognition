@@ -8,12 +8,19 @@ from sklearn.model_selection import train_test_split
 from tensorflow.keras.utils import to_categorical
 import matplotlib.pyplot as plt
 
+st.markdown("""
+    <style>
+    body {
+        background-color: rgb(14, 17, 23); 
+    }
+    </style>
+    """, unsafe_allow_html=True)
 dataset = np.load("../np_dataset.npy")
-st.markdown("<h2 style='text-align: center; color: white; font-weight: bold;'>LHP Capstone Project - Text Recognition </h2>",
+st.markdown("<h2 style='text-align: center; font-weight: bold;'>LHP Capstone Project - Text Recognition </h2>",
             unsafe_allow_html=True)
 st.divider()
 
-st.markdown("<h3 style='text-align: center; color: #FFFAF4; text-decoration: underline;'>Loss & Accuracy Graph</h3>",
+st.markdown("<h3 style='text-align: center; text-decoration: underline;'>Loss & Accuracy Graph</h3>",
             unsafe_allow_html=True)
 
 # example_graph = True
